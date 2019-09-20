@@ -1,0 +1,17 @@
+menu "main"
+
+config DRAYDP_EXTRA_CFLAGS
+	string "extra cflags"
+	default ""
+
+config DRAYDP_EXTRA_LDFLAGS
+	string "extra ldflags"
+	default ""
+
+config DRAYDP_LOCK_PATH
+	string "Default file lock path"
+	default "/var/run/.template.deleteme.lock"
+
+endmenu
+
+#;
