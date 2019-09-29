@@ -6,6 +6,12 @@
 
 #include "dpcfg.h"
 
+/*!
+ * \brief dpcfg is a read-only configuration in json format.
+ *
+ * - Read-only, so there's no synchronization problem.
+ * - Read-only, so you can read data to your local cache to avoid processing overhead.
+ */
 static struct json_object *dpcfg_json = NULL;
 
 static struct json_object *file2obj(const char *path)

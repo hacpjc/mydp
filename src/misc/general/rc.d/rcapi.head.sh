@@ -9,12 +9,12 @@ function msg()
 
 function errmsg()
 {
-	echo "$rcname:ERROR: $*"
+	echo " * ERROR:$rcname: $*"
 }
 
 function abort()
 {
-	echo "$rcname: $*"
+	echo " *** Abort:$rcname: $*"
 	echo "...abort"
 	exit 255
 }

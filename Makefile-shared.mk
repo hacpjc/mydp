@@ -133,7 +133,7 @@ CMD_CHECK_EXEC = if [ "`which $(1)`" = "" ]; then echo " * ERROR: Local program 
 # 1: Output file
 # 2: Complete CC command to run
 #
-ifeq ($(TMCFG_TC_DISABLE_COLOR_OUTPUT),y)
+ifeq ($(DPCFG_TC_DISABLE_COLOR_OUTPUT),y)
 define CMD_CC
 echo -e "\tCC $(1)"; ccout=`$(2) 2>&1`; ccret=$$?; if [ ! "$$ccout" = "" ]; then echo "$(2)" && echo "$$ccout" && echo "$$ccout" > $(1).log; else rm -f $(1).log; fi; test $$ccret -eq 0
 endef
@@ -163,9 +163,9 @@ CMD_STRIP = for f in $(2); do echo -e "\tSTRIP $$f"; $(1) $$f || exit 255; done;
 -include $(PRJ_PATH_AUTOCONF)
 
 ifeq ($(INTERNAL_ONE_TIME_EXPORT),)
-ifneq ($(CONFIG_TC_EXTRA_LD_LIBRARY_PATH),)
+ifneq ($(DPCFG_TC_EXTRA_LD_LIBRARY_PATH),)
 export INTERNAL_ONE_TIME_EXPORT := y
-export LD_LIBRARY_PATH := $(if $(LD_LIBRARY_PATH),$(LD_LIBRARY_PATH):)$(CONFIG_TC_EXTRA_LD_LIBRARY_PATH)
+export LD_LIBRARY_PATH := $(if $(LD_LIBRARY_PATH),$(LD_LIBRARY_PATH):)$(DPCFG_TC_EXTRA_LD_LIBRARY_PATH)
 endif
 endif
 

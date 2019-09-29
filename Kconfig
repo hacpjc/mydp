@@ -1,4 +1,5 @@
 
+source "Kconfig.platform"
 source "Kconfig.tc"
 
 source "src/Kconfig"

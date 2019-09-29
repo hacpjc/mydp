@@ -3,7 +3,7 @@
 #
 include $(PRJ_MK_SHARED)
 
-subdir :=
+subdir := $(DPCFG_PLATFORM)
 
 .PHONY: default
 default: all
