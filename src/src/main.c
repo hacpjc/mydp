@@ -100,8 +100,6 @@ int main(int argc, char **argv)
         stdmsg_lv_set(STDMSG_LV_NONE); // TODO: Use other logger instead.
     }
 
-	rcu_register_thread();
-
 	if (dataplane_init(argc, argv))
 	{
 		return -1;

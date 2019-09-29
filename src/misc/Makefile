@@ -3,7 +3,7 @@
 #
 include $(PRJ_MK_SHARED)
 
-subdir := v3910
+subdir :=
 
 .PHONY: default
 default: all
@@ -14,7 +14,7 @@ default: all
 .PHONY: all
 all::
 	@$(call CMD_PREP_DIR,$(PRJ_DIR_PACK_BIN))
-	@$(call CMD_CP_NOSP_R,$(subdir)/*,$(PRJ_DIR_PACK_BIN)/)
+	@$(foreach d,$(subdir),$(call CMD_CP_NOSP_R,$(subdir)/*,$(PRJ_DIR_PACK_BIN)/);)
 
 .PHONY: all
 all::

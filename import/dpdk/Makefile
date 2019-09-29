@@ -62,14 +62,6 @@ lib_clean:
 .PHONY: lib_distclean
 lib_distclean: clean
 
-.PHONY: lib_clean
-lib_clean:
-	-@$(MAKE) -C $(urcu-folder) clean
-	rm -rvf $(urcu-pfx)
-
-.PHONY: lib_distclean
-lib_distclean: lib_clean
-	rm -rvf $(urcu-folder)
 
 .PHONY: clean
 clean: lib_clean

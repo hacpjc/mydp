@@ -7,27 +7,34 @@ include $(PRJ_MK_SHARED)
 default: all
 
 #
-# draydp main program
+# mydp main program
 #
-DPDK_DIR := ${BUILD_DIR}/dpdk-cpt
+dpdk-dir := $(PRJ_DIR_IMPORT)/dpdk/dpdk-19.08
 
-CROSS := aarch64-thunderx-linux-gnu-
-EXTRA_CFLAGS := $(CFLAGS)
+extra-cflags := 
 
-export RTE_SDK := $(DPDK_DIR)
-export RTE_ARCH := arm64
-export RTE_TARGET := build
+CROSS :=
+
+build-opts :=
+build-opts += EXTRA_CFAGS="$(extra-cflags)"
+build-opts += RTE_SDK=$(dpdk-dir)
+# build-opts := CROSS=$(CROSS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" RTE_SDK=$(DPDK_DIR)
 
 .PHONY: all
 all::
-	test -d $(DPDK_DIR)
-	$(MAKE) -C src CROSS=$(CROSS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" RTE_SDK=$(DPDK_DIR) RTE_TARGET=$(RTE_TARGET)
+	test -d $(dpdk-dir)
+	$(MAKE) -C src $(build-opts)
 
+.PHONY: clean	
+clean::
+	rm -rf src/build
+
+	
 .PHONY: install
 install::
 	@echo "...install binary files into $(PRJ_DIR_PACK_BIN)"
 	@mkdir -vp $(PRJ_DIR_PACK_BIN)
-	@$(call CMD_CP_NOSP,src/build/draydp,$(PRJ_DIR_PACK_BIN))
+	@$(call CMD_CP_NOSP,src/build/mydp,$(PRJ_DIR_PACK_BIN))
 
 #
 # misc

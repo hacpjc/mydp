@@ -7,6 +7,8 @@
 #include <rte_lcore.h>
 #include <rte_ethdev.h>
 
+#include <urcu.h>
+
 #include "lgu/lgu.h"
 #include "initops/initops.h"
 #include "dataplane.h"
@@ -187,7 +189,9 @@ static int verify_dpdk_ethport(void)
 
 int dataplane_init(int argc, char **argv)
 {
-	stdmsg_lv_set(STDMSG_LV_DBG);
+	rcu_register_thread();
+
+	stdmsg_lv_set(STDMSG_LV_DBG); // FIXME
 
 	int res = rte_eal_init(argc, argv);
 	if (res < 0)
