@@ -9,6 +9,7 @@ my-src-y += lgu/stdmsg/stdmsg.c
 my-src-y += initops/initops.c
 
 my-src-y += dpcfg/dpcfg.c
+my-src-y += dpipc/dpipc.c
 
 my-src-y += threadwq/threadwq.c
 my-src-y += threadwq/threadwq_man.c

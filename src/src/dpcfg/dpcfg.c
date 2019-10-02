@@ -31,7 +31,7 @@ static struct json_object *file2obj(const char *path)
 
 int dpcfg_parse(const char *path)
 {
-	BUG_ON(dpcfg_json != NULL); // draycfg exists.
+	BUG_ON(dpcfg_json != NULL); // dpcfg exists.
 
 	dpcfg_json = file2obj(path);
 	if (!dpcfg_json)

@@ -1,0 +1,6 @@
+
+config PLATFORM
+	string "platform"
+	default "native"
+	help
+	Plz input platform name: "native", etc

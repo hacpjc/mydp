@@ -23,11 +23,24 @@ static int dataplane_loop(void *unused)
 
 	DBG("Running loop at socket %u lcore %u pthread %u", socket_id, lcore_id, pthread_self());
 
+	while (1)
+	{
+		caa_cpu_relax();
+	}
+
 	return 0;
+}
+
+static int my_test(void)
+{
+
+	return -1;
 }
 
 int dataplane_exec(void)
 {
+	return my_test();
+
 	/* launch per-lcore loop */
 	rte_eal_mp_remote_launch(dataplane_loop, NULL, CALL_MASTER);
 
@@ -56,7 +69,7 @@ struct cmdarg
 static struct cmdarg local_cmdarg =
 	{
 		.opt_background = 0,
-		.path_conf = "draydp.cfg",
+		.path_conf = "mydp.cfg",
 	};
 
 static void print_help(const char *path)
