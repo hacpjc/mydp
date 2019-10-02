@@ -23,18 +23,17 @@ build-opts += RTE_SDK=$(dpdk-dir)
 .PHONY: all
 all::
 	test -d $(dpdk-dir)
-	$(MAKE) -C src $(build-opts)
+	$(MAKE) -C mydp $(build-opts)
 
 .PHONY: clean	
 clean::
-	rm -rf src/build
+	rm -rf mydp/build
 
-	
 .PHONY: install
 install::
 	@echo "...install binary files into $(PRJ_DIR_PACK_BIN)"
 	@mkdir -vp $(PRJ_DIR_PACK_BIN)
-	@$(call CMD_CP_NOSP,src/build/mydp,$(PRJ_DIR_PACK_BIN))
+	@$(call CMD_CP_NOSP,mydp/build/mydp,$(PRJ_DIR_PACK_BIN))
 
 #
 # misc
@@ -42,6 +41,11 @@ install::
 .PHONY: all
 all::
 	$(MAKE) -C misc	
+
+#
+# dpipc client (reliable)
+#
+
 
 #
 # general

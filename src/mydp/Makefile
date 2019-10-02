@@ -22,7 +22,7 @@ my-src-y += main.c
 # local flags
 #
 my-cflags-y :=
-my-cflags-y += -I$(PRJ_DIR_SRC)/src
+my-cflags-y += -I$(PRJ_DIR_SRC)/mydp
 my-cflags-y += $(EXTRA_CFLAGS)
 my-cflags-y += -I$(PRJ_DIR_STAGE_INC)
 

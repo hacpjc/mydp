@@ -3,7 +3,13 @@
 #
 include $(PRJ_MK_SHARED)
 
-subdir := $(DPCFG_PLATFORM)
+subdir-y :=
+subdir-y += general
+subdir-y += $(DPCFG_PLATFORM)
+
+ifeq ($(DPCFG_PLATFORM),)
+$(warning "Input platform is empty.")
+endif
 
 .PHONY: default
 default: all
@@ -12,14 +18,9 @@ default: all
 # install misc files
 #
 .PHONY: all
-all::
+install::
 	@$(call CMD_PREP_DIR,$(PRJ_DIR_PACK_BIN))
-	@$(foreach d,$(subdir),$(call CMD_CP_NOSP_R,$(subdir)/*,$(PRJ_DIR_PACK_BIN)/);)
-
-.PHONY: all
-all::
-	@$(call CMD_PREP_DIR,$(PRJ_DIR_PACK_BIN))
-	@$(call CMD_CP_NOSP_R,general/*,$(PRJ_DIR_PACK_BIN)/)
+	@$(foreach d,$(subdir-y),$(call CMD_CP_NOSP_R,$(subdir-y)/*,$(PRJ_DIR_PACK_BIN)/);)
 
 #
 # general
