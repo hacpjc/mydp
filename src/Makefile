@@ -38,9 +38,9 @@ install::
 #
 # misc
 #
-.PHONY: all
-all::
-	$(MAKE) -C misc	
+.PHONY: all install clean
+all install clean::
+	$(MAKE) -C misc $@
 
 #
 # dpipc client (reliable)

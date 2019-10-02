@@ -20,7 +20,7 @@ default: all
 .PHONY: all
 install::
 	@$(call CMD_PREP_DIR,$(PRJ_DIR_PACK_BIN))
-	@$(foreach d,$(subdir-y),$(call CMD_CP_NOSP_R,$(subdir-y)/*,$(PRJ_DIR_PACK_BIN)/);)
+	@$(foreach d,$(subdir-y),$(call CMD_CP_NOSP_R,$(d)/*,$(PRJ_DIR_PACK_BIN)/);)
 
 #
 # general
